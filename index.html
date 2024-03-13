@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Wait</title>
     <style>
+
+        .light-img{
+            height:1000px;
+            width:100%;
+        }
+
         #0 {background-image: url("imgs/0.png");}
         #1 {background-image: url("imgs/1.png");}
         #2 {background-image: url("imgs/2.png");}
@@ -12,22 +18,23 @@
         #5 {background-image: url("imgs/5.png");}
     </style>
 </head>
+
 <body>
 <div class="light-img" id="0"></div>
 <script>
-    cat = document.getElementById("0")
-    cat.id = "0"
+
+    light = document.getElementById("0")
+    light.id = "0"
     count = 0
-    swap_fc = function (){
-        cat.id = "0"
+    function addlight(){
+        count = (count+1)%6;
+        light.id = count.toString();
+
     }
-    sb_fc = function (){
-        cat.id = "1"
-    }
-    document.addEventListener("pointerdown", swap_fc)
-    document.addEventListener("keydown", swap_fc)
-    document.addEventListener("keyup",sb_fc)
-    document.addEventListener("pointerup",sb_fc)
+    document.addEventListener("pointerdown", addlight);
+    document.addEventListener("keydown", addlight);
+    // document.addEventListener("keyup", addlight);
+    // document.addEventListener("pointerup", addlight);
 </script>
 </body>
 </html>
