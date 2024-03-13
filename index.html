@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Wait</title>
+    <style>
+        #0 {background-image: url("imgs/0.png");}
+        #1 {background-image: url("imgs/1.png");}
+        #2 {background-image: url("imgs/2.png");}
+        #3 {background-image: url("imgs/3.png");}
+        #4 {background-image: url("imgs/4.png");}
+        #5 {background-image: url("imgs/5.png");}
+    </style>
 </head>
 <body>
-
+<div class="light-img" id="0"></div>
+<script>
+    cat = document.getElementById("0")
+    cat.id = "0"
+    count = 0
+    swap_fc = function (){
+        cat.id = "0"
+    }
+    sb_fc = function (){
+        cat.id = "1"
+    }
+    document.addEventListener("pointerdown", swap_fc)
+    document.addEventListener("keydown", swap_fc)
+    document.addEventListener("keyup",sb_fc)
+    document.addEventListener("pointerup",sb_fc)
+</script>
 </body>
 </html>
