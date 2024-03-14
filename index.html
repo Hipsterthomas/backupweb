@@ -19,54 +19,64 @@
             position:relative;
             overflow:hidden;
         }
-        .light-img{
-            height:1000px;
-            flex-grow:1;
-            width:100%;
-            max-width: 800px;
-            background-position: bottom;
-            background-size: contain;
-            background-repeat: no-repeat;
-            touch-action: manipulation;
-            text-align: center;
-            color:white;
-            -webkit-text-stroke-width: 3px;
-            -webkit-text-stroke-color: black;
-            font-weight:900;
-            font-size:80px;
-            font-family: 'Nunito', sans-serif;
-            word-wrap: break-word;
-            /*height:1000px;*/
-            /*width:100%;*/
-        }
+        /*.light-img{*/
+        /*    height:1000px;*/
+        /*    flex-grow:1;*/
+        /*    width:100%;*/
+        /*    max-width: 800px;*/
+        /*    background-position: bottom;*/
+        /*    background-size: contain;*/
+        /*    background-repeat: no-repeat;*/
+        /*    touch-action: manipulation;*/
+        /*    text-align: center;*/
+        /*    color:white;*/
+        /*    -webkit-text-stroke-width: 3px;*/
+        /*    -webkit-text-stroke-color: black;*/
+        /*    font-weight:900;*/
+        /*    font-size:80px;*/
+        /*    font-family: 'Nunito', sans-serif;*/
+        /*    word-wrap: break-word;*/
+        /*    !*height:1000px;*!*/
+        /*    !*width:100%;*!*/
+        /*}*/
         @media(min-width:1000px) {
-            .light-img {
-                font-size: 40px;
-            }
+            /*.light-img {*/
+            /*    font-size: 40px;*/
+            /*}*/
         }
-        #0 {background-image: url("imgs/0.png");}
-        #1 {background-image: url("imgs/1.png");}
-        #2 {background-image: url("imgs/2.png");}
-        #3 {background-image: url("imgs/3.png");}
-        #4 {background-image: url("imgs/4.png");}
-        #5 {background-image: url("imgs/5.png");}
+        /*#0 {background-image: url("imgs/0.png");}*/
+        /*#1 {background-image: url("imgs/1.png");}*/
+        /*#2 {background-image: url("imgs/2.png");}*/
+        /*#3 {background-image: url("imgs/3.png");}*/
+        /*#4 {background-image: url("imgs/4.png");}*/
+        /*#5 {background-image: url("imgs/5.png");}*/
     </style>
 </head>
 
 <body>
-<div class="light-img" id="0"></div>
-<script>
+<!--<div  class="light-img" id=""></div>-->
+<img onclick="addlight()"  src="imgs/0.png" alt="0">
 
-    light = document.querySelector(".light-img");
-    count = 5;
-    function addlight(){
-        count = (count+1)%6;
-        light.id = count.toString();
+<script>
+    var light = document.querySelector("img");
+    var count = 0;
+
+    function addlight() {
+        count = (count + 1) % car.length;
+        light.src = car[count];
     }
-    document.addEventListener("pointerdown", addlight);
+
+    var car = [
+        "imgs/0.png",
+        "imgs/1.png",
+        "imgs/2.png",
+        "imgs/3.png",
+        "imgs/4.png",
+        "imgs/5.png",
+    ];
+
+    //document.addEventListener("pointerdown", addlight);
     document.addEventListener("keydown", addlight);
-    // document.addEventListener("keyup", addlight);
-    // document.addEventListener("pointerup", addlight);
 </script>
 </body>
 </html>
