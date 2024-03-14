@@ -4,12 +4,46 @@
     <meta charset="UTF-8">
     <title>Wait</title>
     <style>
-
+        html {height: 100%;overflow: hidden;}
+        body{
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #bdaa90;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            position:relative;
+            overflow:hidden;
+        }
         .light-img{
             height:1000px;
+            flex-grow:1;
             width:100%;
+            max-width: 800px;
+            background-position: bottom;
+            background-size: contain;
+            background-repeat: no-repeat;
+            touch-action: manipulation;
+            text-align: center;
+            color:white;
+            -webkit-text-stroke-width: 3px;
+            -webkit-text-stroke-color: black;
+            font-weight:900;
+            font-size:80px;
+            font-family: 'Nunito', sans-serif;
+            word-wrap: break-word;
+            /*height:1000px;*/
+            /*width:100%;*/
         }
-
+        @media(min-width:1000px) {
+            .light-img {
+                font-size: 40px;
+            }
+        }
         #0 {background-image: url("imgs/0.png");}
         #1 {background-image: url("imgs/1.png");}
         #2 {background-image: url("imgs/2.png");}
@@ -23,13 +57,11 @@
 <div class="light-img" id="0"></div>
 <script>
 
-    light = document.getElementById("0")
-    light.id = "0"
-    count = 0
+    light = document.querySelector(".light-img");
+    count = 5;
     function addlight(){
         count = (count+1)%6;
         light.id = count.toString();
-
     }
     document.addEventListener("pointerdown", addlight);
     document.addEventListener("keydown", addlight);
