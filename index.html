@@ -19,51 +19,43 @@
             position:relative;
             overflow:hidden;
         }
-        /*.light-img{*/
-        /*    height:1000px;*/
-        /*    flex-grow:1;*/
-        /*    width:100%;*/
-        /*    max-width: 800px;*/
-        /*    background-position: bottom;*/
-        /*    background-size: contain;*/
-        /*    background-repeat: no-repeat;*/
-        /*    touch-action: manipulation;*/
-        /*    text-align: center;*/
-        /*    color:white;*/
-        /*    -webkit-text-stroke-width: 3px;*/
-        /*    -webkit-text-stroke-color: black;*/
-        /*    font-weight:900;*/
-        /*    font-size:80px;*/
-        /*    font-family: 'Nunito', sans-serif;*/
-        /*    word-wrap: break-word;*/
-        /*    !*height:1000px;*!*/
-        /*    !*width:100%;*!*/
-        /*}*/
-        @media(min-width:1000px) {
-            /*.light-img {*/
-            /*    font-size: 40px;*/
-            /*}*/
-        }
-        /*#0 {background-image: url("imgs/0.png");}*/
-        /*#1 {background-image: url("imgs/1.png");}*/
-        /*#2 {background-image: url("imgs/2.png");}*/
-        /*#3 {background-image: url("imgs/3.png");}*/
-        /*#4 {background-image: url("imgs/4.png");}*/
-        /*#5 {background-image: url("imgs/5.png");}*/
     </style>
 </head>
 
 <body>
-<!--<div  class="light-img" id=""></div>-->
 <img onclick="addlight()"  src="imgs/0.png" alt="0">
 
 <script>
     var light = document.querySelector("img");
     var count = 0;
-
+    var sound = [
+        "sound/1.mp3",
+        "sound/2.mp3",
+        "sound/3.mp3",
+        "sound/4.mp3",
+        "sound/5.mp3",
+    ]
+    soundcount = 0;
     function addlight() {
+        var a = new Audio(sound[soundcount]);
+        a.load()
+        a.play()
+        soundcount = (soundcount+1)%sound.length;
         count = (count + 1) % car.length;
         light.src = car[count];
+        if(count!==5) setTimeout(addlight,1000);
+        else{
+            setTimeout(restart,4445);//rand time
+        }
+    }
+    function restart(e){
+        count = 0;
+        light.src = car[count];
+        if(e.key === "keydown"){
+            document.removeEventListener("keydown",restart);
+            settime = setTimeout(addlight,1000);
+        }
+
     }
 
     var car = [
@@ -75,8 +67,8 @@
         "imgs/5.png",
     ];
 
-    //document.addEventListener("pointerdown", addlight);
-    document.addEventListener("keydown", addlight);
+    var settime = setTimeout(addlight,1000);
+    // document.addEventListener("keydown", addlight());
 </script>
 </body>
 </html>
