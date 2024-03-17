@@ -30,7 +30,8 @@
 </head>
 
 <body>
-<img onclick="addlight()"  src="imgs/0.png" alt="0">
+<!--<img onclick="addlight()"  src="imgs/0.png" alt="0">-->
+<img src="imgs/0.png" alt="0">
 <h1>Wait a Second...</h1>
 <script>
     var light = document.querySelector("img");
@@ -42,29 +43,6 @@
         "sound/4.mp3",
         "sound/5.mp3",
     ]
-    soundcount = 0;
-    function addlight() {
-        var a = new Audio(sound[soundcount]);
-        a.load()
-        a.play()
-        soundcount = (soundcount+1)%sound.length;
-        count = (count + 1) % car.length;
-        light.src = car[count];
-        if(count!==5) setTimeout(addlight,1000);
-        else{
-            setTimeout(restart,4445);//rand time (不重要
-        }
-    }
-
-    function restart(e){
-        count = 0;
-        light.src = car[count];
-        if(e.key === "keydown"){
-            document.removeEventListener("keydown",restart);
-            settime = setTimeout(addlight,1000);
-        }
-
-    }
 
     var car = [
         "imgs/0.png",
@@ -75,8 +53,28 @@
         "imgs/5.png",
     ];
 
+    soundcount = 0;
+
+    function addlight() {
+        var a = new Audio(sound[soundcount]);
+        a.load()
+        a.play()
+        soundcount = (soundcount+1)%sound.length;
+        count = (count + 1) % car.length;
+        light.src = car[count];
+        if(count!==5) setTimeout(addlight,1000);
+        else{
+            setTimeout(restart,3445);
+        }
+    }
+
+    function restart(){
+        count = 0;
+        light.src = car[count];
+        setTimeout(addlight,2000);
+    }
+
     var settime = setTimeout(addlight,1000);
-    // document.addEventListener("keydown", addlight());
 </script>
 </body>
 </html>
